@@ -1,0 +1,336 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foundation Template | Workspace</title>
+
+
+  <meta name="description" content="Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more." />
+
+  <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com" />
+  <meta name="copyright" content="ZURB, inc. Copyright (c) 2013" />
+
+  <link rel="stylesheet" href="assets/css/foundation.min.css" />
+  <style type="text/css">
+  /*<![CDATA[*/
+  body {
+    background: url('assets/images/honey_im_subtle.png') repeat fixed ;
+    /*background-color:#404040;*/
+    font-family: 'Raleway', 'sans-serif';
+
+
+  }
+
+  a {
+
+    font-family: 'Raleway', 'sans-serif';
+
+
+  }
+
+  h6 {
+
+    font-family: 'Raleway', 'sans-serif';
+
+
+  }
+
+  h5 {
+
+    font-family: 'Raleway', 'sans-serif';
+
+
+  }
+  /*]]>*/
+  </style>
+
+
+  <script src="assets/js/modernizr.js"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+
+
+</head>
+<body>
+
+
+  <!-- Requires Foundation 4 | visit http://foundation.zurb.com to download -->
+
+  <div class="row">
+    <div class="large-12 columns">
+
+      <!-- Navigation -->
+      <nav class="top-bar" style='opacity:1; '>
+        <ul class="title-area" >
+          <!-- Title Area -->
+          <li class="name" >
+            <h1>
+              <a href="#"  style='color:#fff'>
+                DAI's Project Dashboards
+              </a>
+            </h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+          <!-- <ul class="left">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+          </ul> -->
+
+         <!--  <ul class="right">
+            <li class="search">
+              <form>
+                <input type="search">
+              </form>
+            </li>
+ 
+            <li class="has-button">
+              <a class="small button" href="#">Search</a>
+            </li>
+          </ul> -->
+        </section>
+      </nav>
+
+      <!-- End Navigation -->
+
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="large-12 columns">
+
+      <!-- Desktop Slider -->
+
+      <div class="hide-for-small">
+        <div id="featured">
+          <!--<img src="assets/images/wb1.png" height="200" width="1000" alt="slide image">-->
+              <!-- <img src="http://placehold.it/1000x400&text=Slide Image" alt="slide image">
+              <img src="http://placehold.it/1000x400&text=Slide Image" alt="slide image"> -->
+            </div>
+          </div>
+
+          <!-- End Desktop Slider -->
+
+
+          <!-- Mobile Header -->
+
+
+          <div class="row">
+            <div class="small-12 show-for-small"><br>
+              
+            </div>
+          </div>
+
+
+          <!-- End Mobile Header -->
+
+        </div>
+      </div><br>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+
+            <!-- Content -->
+
+            <div class="large-12 columns">
+              <div class="panel radius">
+
+                <div class="row">
+                  <div class="large-4 small-6 columns">
+
+                    <h4>Effective Governance Program -EGP</h4><hr/>
+                    <h5 class="subheader">Welcome to the Dashboard for EGP. EGP is designed to assist the Palestinian Authority (PA) in strengthening the operational and management capabilities of key ministries and public sector institutions to govern more effectively.
+                    </h5>
+
+                    <!-- <div class="show-for-small" align="center">
+                      <a href="#" class="small radius button">Call To Action!</a><br>
+
+                      <a href="#" class="small radius button">Call To Action!</a>
+                    </div>
+ -->
+                  </div>
+                  <div class="large-8 small-6 columns" >
+                    <div id='map' style='width:100%; height:300px'></div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          
+
+            <!-- End Content -->
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+
+            <!-- Thumbnails -->
+
+            <div class="large-6 small-6 columns">
+              <h6 class="panel"><span style='color:#adadad'> Contract Dates </span> <span id='contractdates'></span></h6>
+            </div>
+
+            <div class="large-6 small-6 columns">
+              <h6 class="panel"><span style='color:#adadad'> Contract Number </span> <span id='contractnumber'> </span> </h6>
+            </div>
+
+
+            <!-- End Thumbnails -->
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+
+            <!-- Thumbnails -->
+
+            <div class="large-6 small-6 columns">
+              <h6 class="panel"><span style='color:#adadad'> Contract Value </span> <span id='contractvalue'></span></h6>
+            </div>
+
+            <div class="large-6 small-6 columns">
+              <h6 class="panel"><span style='color:#adadad'> Project Number </span><span id='projectnumber'> </span> </h6>
+            </div>
+
+
+            <!-- End Thumbnails -->
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+           
+            <!-- Thumbnails -->
+            
+            <div class="large-6 small-6 columns">
+              <h6 class="panel"><span style='color:#adadad'>Chief of Party </span> <span id='chiefofparty'> </span> </h6>
+            </div>
+            
+            <div class="large-6 small-6 columns">
+              <h6 class="panel"><span style='color:#adadad'>Main Project Office </span><span id='mainprojectoffice'> </span></h6>
+            </div>
+            
+            
+            <!-- End Thumbnails -->
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      
+       <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+           
+            <!-- Thumbnails -->
+            
+            <div class="large-6 small-6 columns">
+              <h6 class="panel"><span style='color:#adadad'>HO Project Team Director </span> <span id='hoprojectteamdirector'> </span> </h6>
+            </div>
+            
+            <div class="large-6 small-6 columns">
+              <h6 class="panel"><span style='color:#adadad'>HO Finance </span><span id='hofinance'> </span></h6>
+            </div>
+            <!-- End Thumbnails -->
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+           
+            <!-- Thumbnails -->
+            
+            <div class="large-6 small-6 columns">
+              <h6 class="panel"><span style='color:#adadad'>Associate </span> <span id='associate'> </span> </h6>
+            </div>
+            
+            <div class="large-6 small-6 columns">
+              <h6 class="panel"><span style='color:#adadad'>HO Project Manager </span><span id='hoprojectmanager'> </span></h6>
+            </div>
+            <!-- End Thumbnails -->
+            
+          </div>
+        </div>
+      </div>
+      
+      
+       <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+           
+            <!-- Thumbnails -->
+            
+            <div class="large-6 small-6 columns">
+              <h6 class="panel"><span style='color:#adadad'>USAID COR </span> <span id='usaidcor'> </span> </h6>
+            </div>
+            
+            <div class="large-6 small-6 columns">
+              <h6 class="panel"><span style='color:#adadad'>HO TAMIS </span><span id='homeofficetamisbackstop'> </span></h6>
+            </div>
+            <!-- End Thumbnails -->
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+
+
+
+      
+
+      <!-- Footer -->
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr>
+          <div class="row">
+            <div class="large-6 columns">
+              <p></p>
+            </div>
+            <div class="large-6 columns">
+              <ul class="inline-list right">
+                <li><a href="http://10.233.3.87:8090/TAMISLogin/v1/project/txt">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>              
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="assets/js/foundation.min.js"></script>
+      <script src="assets/js/tamis.js"></script>
+      
+
+    </body>
+    </html>

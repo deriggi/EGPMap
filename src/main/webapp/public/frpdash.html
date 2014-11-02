@@ -1,0 +1,208 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="shortcut icon" href="http://dai.com/sites/all/themes/dai/favicon.ico" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jordan Fiscal Reform II</title>
+
+
+        <meta name="description" content="Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more." />
+
+        <link rel="stylesheet" href="assets/css/foundationtemplate.css" />
+        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+        <script src="assets/js/jquery1.11.1.js"></script>
+
+        <script src="assets/js/foundation.min.js"></script>
+        <script src="assets/js/foundation.dropdown.js"></script>
+        <!--  <script src="assets/js/highcharts.js"></script>
+          <script src="assets/js/highcharts3d.js"></script>-->
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/highcharts-3d.js"></script>
+        <script src="assets/js/egp.js"></script>
+
+
+        <style type="text/css">
+            /*<![CDATA[*/
+            body {
+                /*background: url('assets/images/honey_im_subtle.png') repeat fixed ;*/
+                /*background-color:#404040;*/
+                font-family: 'Open Sans', sans-serif;
+
+
+            }
+
+            .chartbutton{padding:10px; margin:10px; cursor:pointer;color:#0b61a4; font-weight:bold}
+
+
+
+            h3, h5, h6, a,li {
+
+                font-family: 'Open Sans', sans-serif;
+
+
+            }
+            /*  h3 {
+            
+                font-family: 'Raleway', 'sans-serif';
+            
+            
+              }*/
+            /*]]>*/
+        </style>
+
+
+        <script src="assets/js/modernizr.js"></script>
+
+
+
+    </head>
+    <body>
+
+
+
+        <nav class="top-bar" data-topbar id='navbar' >
+            <ul class="title-area">
+
+                <li class="name">
+                    <h1>
+
+                        <a href="#"><img src ="assets/images/usaid5.png"/>
+                            Jordan Fiscal Reform Dashboard
+                        </a>
+                    </h1>
+                </li>
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
+
+            <section class="top-bar-section">
+
+                <ul class="left">
+                    <li class="divider"></li>
+                    <li class="has-dropdown">
+                        <a class="active" href="#">Indicators</a>
+                        <ul class="dropdown">
+                            <!-- <li><label> section name </label></li> -->
+                            <li id='findicators'><a href="#" class="">FAF/PPR</a></li>
+                            <!--<li id='dindicators'><a href="#">Team D</a></li>-->
+                            <!-- <li><a href="#">Dropdown Option</a></li> -->
+                            <li class="divider"></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="left">
+                    <li class="divider"></li>
+                    <li class="has-dropdown">
+                        <a class="active" href="#">Events and Training</a>
+                        <ul class="dropdown">
+                            <!-- <li><label> section name </label></li> -->
+                            <li id='chartsitem'><a href="#" >Charts</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="left">
+                    <li class="divider"></li>
+                    <li class="has-dropdown">
+                        <a class="active" href="#">Trading Across Borders</a>
+                        <ul class="dropdown">
+                            <!-- <li><label> section name </label></li> -->
+                            <li id='tradeitem'> <a href="#" > Charts </a> </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+
+        <div id='dynamiccontainer'>
+
+        </div>
+
+        <footer class="row">
+            <div class="large-12 columns">
+                <hr/>
+
+            </div>
+        </footer>
+
+        <div class="row" id="datatable" style="display:none">
+            <h3>Project Impact</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th width="100">#</th>
+                        <th>Indicator</th>
+                        <th width="150" style="text-align:right">Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                    <tr>
+                        <td>1.1.1</td>
+                        <td>Number of key personnel in fiscal policy and fiscal administration trained with USG assistance</td>
+                        <td style="text-align:right">7,937</td>
+                    </tr>
+                    <tr>
+                        <td>1.1.2</td>
+                        <td>Percentage of Fiscal Policy Unit Staff funded by host government</td>
+                        <td style="text-align:right">0.5%</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>1.1.3</td>
+                        <td>Number of policy reforms/regulations/administrative procedures drafted and presented for public/stakeholder consultation as a result of USG assistance</td>
+                        <td style="text-align:right">227</td>
+                    </tr>
+                     <tr>
+                        <td>2.1.1</td>
+                        <td>Number of consultative processes with the private sector as a result of </td>
+                        <td style="text-align:right">2</td>
+                    </tr>
+                     <tr>
+                        <td>2.1.2</td>
+                        <td>Number of customs harmonization procedures implemented in accordance with internationally accepted standards as a result of USG assistance</td>
+                        <td style="text-align:right">6</td>
+                    </tr>
+                    <tr>
+                        <td>2.2.1</td>
+                        <td>Number of trade and investment capacity building diagnostics conducted</td>
+                        <td style="text-align:right">10</td>
+                    </tr>
+                    <tr>
+                        <td>4.1.1.14</td>
+                        <td>Person hours of training completed in fiscal policy and fiscal administration supported by USG assistance</td>
+                        <td style="text-align:right">176,052</td>
+                    </tr>
+                    <tr>
+                        <td>4.2.1.20</td>
+                        <td>Number of days of technical assistance trade and investment environment provided to counterparts or stakeholders</td>
+                        <td style="text-align:right">5,281</td>
+                    </tr>
+                    <tr>
+                        <td>4.5.1.26</td>
+                        <td>Average number of days required to trade goods across borders (average export/import time) </td>
+                        <td style="text-align:right">14</td>
+                    </tr>
+                    
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+
+
+
+    </body>
+</html>
