@@ -22,7 +22,7 @@ function getTechnicalActivities() {
             fixedMarker.openPopup();
             markers.addLayer(fixedMarker);
             targetMinis - targetMinis.concat(data[dataIndex].targetMinistries);
-            FilterManager.pushMarker({marker: fixedMarker, data: data[dataIndex], show: true, g: "ta"});
+            FilterManager.pushMarker({marker: fixedMarker, data: data[dataIndex], show: true, g: "ta", defaultIcon: IconManager.getTAIcon()});
             statuses.push(data[dataIndex].status);
 
         }
@@ -160,6 +160,41 @@ function addStatusClickHandler(listItem) {
 
 }
 
+var HIMIIHighlighter = (function setupHighlighter() {
+    var highlightOn = false;
+    return {
+        highlight: function() {
+
+            var hazardIconHighlight = IconManager.getHighlightIcon();
+
+            // iterate through markers
+            var markers = FilterManager.getAllMakers();
+            if (!highlightOn) {
+
+                for (var i in markers) {
+                    if (markers[i].marker && markers[i].data.isHimii) {
+                        markers[i].marker.setIcon(hazardIconHighlight);
+
+                    }
+                }
+                highlightOn = true;
+            } else {
+                for (var i in markers) {
+                    if (markers[i].marker && markers[i].data.isHimii) {
+                        if (markers[i].g === 'ta') {
+                            markers[i].marker.setIcon(IconManager.getTAIcon());
+                        } else {
+                            markers[i].marker.setIcon(IconManager.getTrainingIcon());
+                        }
+                    }
+                }
+                highlightOn = false;
+            }
+
+        }
+    };
+})();
+
 var FilterManager = (function setupFilterManager() {
     var allMarkers = [];
     var trainingClusterGroup;
@@ -168,8 +203,20 @@ var FilterManager = (function setupFilterManager() {
     var selectedStatus = null;
     var selectedMiniListItem = null;
     var selectedStatusListItem = null;
-    
+    var himiiFilterOn = false;
     return{
+        toggleHimiiFilter : function(){
+          FilterManager.setHimiiFilter(!himiiFilterOn);  
+        },
+        setHimiiFilter: function(toFilter) {
+            himiiFilterOn = toFilter;
+            var himiiElement = $('#himiiFilter');
+            if (!himiiFilterOn) {
+                $(himiiElement).css("color", '#a0a0a0');
+            } else {
+                $(himiiElement).css("color", '#fff');
+            }
+        },
         setSelectedMiniListItem: function(li) {
 
             if (li !== selectedMiniListItem && selectedMiniListItem !== null) {
@@ -203,16 +250,23 @@ var FilterManager = (function setupFilterManager() {
         setTrainingGroup: function(tg) {
             trainingClusterGroup = tg;
         },
+        getTrainingGroup: function() {
+            return trainingClusterGroup;
+        },
         setTAClusterGroup: function(ta) {
             taClusterGroup = ta;
         },
         pushMarker: function(m) {
             allMarkers.push(m);
         },
+        getAllMakers: function() {
+            return allMarkers;
+        },
         filterAll: function() {
+        
             for (var i in allMarkers) {
-                var toHideMarker = !FilterManager.ministryFilter(allMarkers[i]) || !FilterManager.statusFilter(allMarkers[i]);
-
+                var toHideMarker = !FilterManager.ministryFilter(allMarkers[i]) || !FilterManager.statusFilter(allMarkers[i]) || !FilterManager.himiiFilter(allMarkers[i]);
+                
                 // if marker is showing and needs to hide, then hide
                 if (toHideMarker && allMarkers[i].show) {
                     if (trainingClusterGroup.hasLayer(allMarkers[i].marker)) {
@@ -235,6 +289,17 @@ var FilterManager = (function setupFilterManager() {
                     allMarkers[i].show = true;
                 }
             }
+        },
+        himiiFilter: function(marker) {
+            if (himiiFilterOn === false) {
+                return true;
+            }
+            
+            
+            if (marker.data.isHimii && himiiFilterOn === true) {
+                return true;
+            }
+            return false;
         },
         ministryFilter: function(marker) {
             // if filter off return true
@@ -264,7 +329,7 @@ var FilterManager = (function setupFilterManager() {
 
             return false;
         }
-        
+
 
 
     };
@@ -280,7 +345,6 @@ function getTraining() {
 //					n += childrenmarkers[i].number;
 //				}
                 return L.divIcon({html: childrenmarkers.length, className: 'trainingcluster', iconSize: L.point(45, 45)});
-//                return L.divIcon({html: "<img src='/TAMISLogin/public/assets/images/greencluster.png' height='30' >"});
             }});
         var minis = [];
         var statuses = [];
@@ -288,7 +352,7 @@ function getTraining() {
             fixedMarker = addTrainingMarker(data[dataIndex].latitude, data[dataIndex].longitude, data[dataIndex]);
             fixedMarker.openPopup();
             markers.addLayer(fixedMarker);
-            FilterManager.pushMarker({marker: fixedMarker, data: data[dataIndex], show: false, g: "tr"});
+            FilterManager.pushMarker({marker: fixedMarker, data: data[dataIndex], show: true, g: "tr", defaultIcon: IconManager.getTrainingIcon()});
             minis = minis.concat(data[dataIndex].targetMinistries);
             statuses.push(data[dataIndex].status);
 
@@ -356,12 +420,12 @@ function handleHimii(data) {
 
 function addTrainingMarker(lat, lon, data) {
 
-    var fixedMarker = L.marker(new L.LatLng(lat, lon), {
-        icon: L.mapbox.marker.icon({
-            'marker-color': '216A12'
-        })
-//    }).bindPopup(data.name).addTo(map);
-    }).bindPopup(data.track + "<br><b>Status: </b>" + data.status);
+    var fixedMarker = L.marker(new L.LatLng(lat, lon), 
+//        IconManager.getTrainingIcon())
+        {icon: L.mapbox.marker.icon({
+            'marker-color': '216A12'})}
+//        })
+    ).bindPopup(data.track + "<br><b>Status: </b>" + data.status);
 
     fixedMarker.on('click', function(e) {
         JD.set('title', data.activityHeading);
@@ -370,7 +434,7 @@ function addTrainingMarker(lat, lon, data) {
         $('#location').remove();
         $('#date').remove();
         handleHimii(data);
-        
+
         document.getElementById('goal').innerHTML = '';
         add('location', "<span style='color:#a8a8a8'>Location: </span>" + data.location, 'goal');
         add('ps', "<span style='color:#a8a8a8'>Percent satisfied: </span>" + data.percentSatisfied, 'goal');
@@ -477,6 +541,33 @@ var JD = (function() {
 
 })();
 
+var IconManager = (function() {
+
+
+    var highlightIcon = L.mapbox.marker.icon({
+        'marker-color': 'FF0000'
+    });
+
+    var taIcon = L.mapbox.marker.icon({
+        'marker-color': '1C85EB'
+    });
+
+    var trainingIcon = L.mapbox.marker.icon({
+        'marker-color': '216A12'
+    });
+    return {
+        getHighlightIcon: function() {
+            return highlightIcon;
+        },
+        getTAIcon: function() {
+            return taIcon;
+        },
+        getTrainingIcon: function() {
+            return trainingIcon;
+        }
+    };
+})();
+
 var PhotosSelector = (function() {
     var selectedMenu;
     var frames = ['Before', 'During', 'After']
@@ -515,6 +606,11 @@ $(document).ready(
             $('#zoomout').click(function() {
                 zoomOut(map);
             });
+            $('#himiiFilter').click(function(){
+                FilterManager.toggleHimiiFilter();
+                FilterManager.filterAll(); 
+            });
+             
         }
 );
 
