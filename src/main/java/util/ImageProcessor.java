@@ -43,45 +43,45 @@ public class ImageProcessor {
     }
 
     public static String getImage(CloseableHttpClient client, String url, String outputPath) {
-        return "bogus.jpg";
+//        return "bogus.jpg";
 //        
-//        CloseableHttpResponse response = null;
-//        FileOutputStream fos = null;
-//        String imageOutPath = null;
-//        try {
-//            HttpGet imageGet = new HttpGet(url);
-//
-//            response = client.execute(imageGet);
-//            byte[] imageArray = EntityUtils.toByteArray(response.getEntity());
-//
-//            BufferedImage scaled = new ImageProcessor().writeImage(new ByteArrayInputStream(imageArray), ImageProcessor.STANDARD_WIDTH);
-//            imageOutPath = outputPath + new Date().getTime() + ".jpg";
-//            ImageIO.write(scaled, "jpeg", new File(imageOutPath));
-//            System.out.println(imageOutPath);
-//
-//        } catch (IOException ex) {
-//            if (ex != null) {
-//                ex.printStackTrace();
-//            }
-//
-//        } finally {
-//
-//            if (response != null) {
-//                try {
-//                    response.close();
-//                } catch (IOException ex1) {
-//                    Logger.getLogger(TamisLogin.class.getName()).log(Level.SEVERE, null, ex1);
-//                }
-//            }
-//            if (fos != null) {
-//                try {
-//                    fos.close();
-//                } catch (IOException ex1) {
-//                    Logger.getLogger(TamisLogin.class.getName()).log(Level.SEVERE, null, ex1);
-//                }
-//            }
-//        }
-//        return imageOutPath;
+        CloseableHttpResponse response = null;
+        FileOutputStream fos = null;
+        String imageOutPath = null;
+        try {
+            HttpGet imageGet = new HttpGet(url);
+
+            response = client.execute(imageGet);
+            byte[] imageArray = EntityUtils.toByteArray(response.getEntity());
+
+            BufferedImage scaled = new ImageProcessor().writeImage(new ByteArrayInputStream(imageArray), ImageProcessor.STANDARD_WIDTH);
+            imageOutPath = outputPath + new Date().getTime() + ".jpg";
+            ImageIO.write(scaled, "jpeg", new File(imageOutPath));
+            System.out.println(imageOutPath);
+
+        } catch (IOException ex) {
+            if (ex != null) {
+                ex.printStackTrace();
+            }
+
+        } finally {
+
+            if (response != null) {
+                try {
+                    response.close();
+                } catch (IOException ex1) {
+                    Logger.getLogger(TamisLogin.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+            }
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException ex1) {
+                    Logger.getLogger(TamisLogin.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+            }
+        }
+        return imageOutPath;
     }
 
     public BufferedImage writeImage(InputStream is, int width) {
