@@ -93,6 +93,9 @@ public class EGPTrainingsPageParser extends PageParser {
                 String text = allRows.get(i).get(j);
 
                 // get header of same index
+                if(row.containsKey(header.get(j))){
+                    header.set(j, header.get(j).concat("_"));
+                }
                 row.put(header.get(j), text);
 
             }

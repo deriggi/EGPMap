@@ -399,7 +399,7 @@ function addMarker(lat, lon, data) {
         showPhotos(bi, 'Before', false);
         showPhotos(di, 'During', true);
         showPhotos(ai, 'After', true);
-        add('pc', "<span style='color:#a8a8a8'>Percent Complete: </span>" + data.percentComplete, 'goal');
+        add('cost', "<span style='color:#a8a8a8'>Final Cost: </span>" + data.finalCost, 'goal');
 //        add('ministry', "<span style='color:#a8a8a8'>Ministry: </span>" + data.targetMinistries, 'goal');
         add('location', "<span style='color:#a8a8a8'>Location: </span>" + data.location, 'goal');
         add('enddate', "<span style='color:#a8a8a8'>End Date: </span>" + data.endDate, 'goal');
@@ -430,7 +430,6 @@ function addTrainingMarker(lat, lon, data) {
     fixedMarker.on('click', function(e) {
         JD.set('title', data.activityHeading);
         $('#ministry').remove();
-        $('#pc').remove();
         $('#location').remove();
         $('#date').remove();
         handleHimii(data);
@@ -438,7 +437,8 @@ function addTrainingMarker(lat, lon, data) {
         document.getElementById('goal').innerHTML = '';
         add('location', "<span style='color:#a8a8a8'>Location: </span>" + data.location, 'goal');
         add('ps', "<span style='color:#a8a8a8'>Percent satisfied: </span>" + data.percentSatisfied, 'goal');
-
+        add('cost', "<span style='color:#a8a8a8'>Final Cost: </span>" + data.finalCost, 'goal');
+        
         add('male', "<span style='color:#a8a8a8'>Male attendees: </span>" + data.male, 'goal');
         add('female', "<span style='color:#a8a8a8'>Female attendees: </span>" + data.female, 'goal');
         add('enddate', "<span style='color:#a8a8a8'>End Date: </span>" + data.endDate, 'goal');

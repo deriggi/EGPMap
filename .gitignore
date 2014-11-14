@@ -2,3 +2,4 @@
 *.war
 *TAMISLogin.java
 *.zip
+/target/

@@ -23,6 +23,10 @@ public class Training {
     private String activityHeading;
     private boolean isHimii;
     private String track;
+    private String finalCost;
+
+    
+    
     private ArrayList<String> images = null;
     private ArrayList<String> targetMinistries = null;
     private float latitude;
@@ -30,6 +34,7 @@ public class Training {
     private int male;
     private int female;
     private float percentSatisfied;
+    public static final String finalCostKey = "finalcost";
     public static final String himiiKey = "usaidmissionpriorityactivity";
     public static final String activityHeadingKey = "activityheading";
     public static final String trackKey = "track";
@@ -58,6 +63,14 @@ public class Training {
         images.add(image);
     }
 
+    public String getFinalCost() {
+        return finalCost;
+    }
+
+    public void setFinalCost(String finalCost) {
+        this.finalCost = finalCost;
+    }
+    
     public boolean isIsHimii() {
         return isHimii;
     }

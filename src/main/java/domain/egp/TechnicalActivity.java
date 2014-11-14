@@ -23,12 +23,12 @@ public class TechnicalActivity {
     private String startDate;
     private String endDate;
     private String status;
+
+    
     private String track;
     private String activityHeading;
     private boolean isHimii;
-
-    
-    
+    private String finalCost;
     private ArrayList<String> beforeImages = null;
     private ArrayList<String> afterImages = null;
     private ArrayList<String> duringImages = null;
@@ -36,6 +36,7 @@ public class TechnicalActivity {
     private float latitude;
     private float longitude;
     
+    public static final String finalCostKey = "finalcost";
     public static final String himiiKey = "usaidmissionpriorityactivity";
     public static final String nameKey = "nameofsitetitle";
     public static final String longitudeKey = "longitude";
@@ -106,6 +107,13 @@ public class TechnicalActivity {
         this.activityHeading = activityHeading;
     }
 
+    public String getFinalCost() {
+        return finalCost;
+    }
+
+    public void setFinalCost(String finalCost) {
+        this.finalCost = finalCost;
+    }
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }

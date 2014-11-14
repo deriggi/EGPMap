@@ -40,6 +40,9 @@ public class EGPTechnicalSitesConverter {
             
         }
         
+        if(map.containsKey(TechnicalActivity.finalCostKey)){
+            ta.setFinalCost(map.get(TechnicalActivity.finalCostKey));
+        }
         if(map.containsKey(TechnicalActivity.trackKey)){
             ta.setTrack(map.get(TechnicalActivity.trackKey));
         }

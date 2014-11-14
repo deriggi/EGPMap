@@ -48,6 +48,15 @@ public class ProjectDataResource {
         return json;
     }
     
+     @GET
+    @Path("/egp/indicators")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getIndicators(){
+        String json = GsonHelper.get().toJson(ProjectCache.get().getIps());
+        
+        return json;
+    }
+    
     @GET
     @Path("/txt")
     @Produces("text/plain")

@@ -67,6 +67,9 @@ public class EGPTrainingConverter {
             }
         }
         
+         if(map.containsKey(Training.finalCostKey)){
+            t.setFinalCost(map.get(Training.finalCostKey));
+        }
         if (map.containsKey(Training.eventIdKey)) {
             t.setEventId(map.get(Training.eventIdKey));
         }

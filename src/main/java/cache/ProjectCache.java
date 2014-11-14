@@ -4,6 +4,7 @@
  */
 package cache;
 
+import domain.egp.IndicatorProgress;
 import domain.egp.TechnicalActivity;
 import domain.egp.Training;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class ProjectCache {
     
     private HashMap<String, TechnicalActivity> technicalActivities = new HashMap<String,TechnicalActivity>();
     private HashMap<String, Training> training = new HashMap<String, Training>();
+    private ArrayList<IndicatorProgress> ips = new ArrayList<IndicatorProgress>();
     
     
     public static ProjectCache get(){
@@ -32,6 +34,13 @@ public class ProjectCache {
         return training;
     }
 
+    public void setIndicatorProgress(ArrayList<IndicatorProgress> ip){
+        this.ips  =ip;
+    }
+    public ArrayList<IndicatorProgress> getIps(){
+        return ips;
+    }
+    
     public void setTraining(HashMap<String, Training> training) {
         this.training = training;
     }

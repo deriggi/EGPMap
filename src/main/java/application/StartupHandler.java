@@ -6,6 +6,8 @@ package application;
 
 import cache.ProjectCache;
 import com.dai.tamislogin.TamisLogin;
+import static com.dai.tamislogin.TamisLogin.getEGPIndicators;
+import domain.egp.IndicatorProgress;
 import domain.egp.TechnicalActivity;
 import domain.egp.Training;
 import java.util.ArrayList;
@@ -79,6 +81,17 @@ public class StartupHandler implements ServletContextListener {
             ProjectCache.get().addDataset("egp", "training", training);
         }
 
+        // TODO load egp indicators, then convert all to IndicatorProgress objects, send to front end
+        ArrayList<HashMap<String, String>> data = getEGPIndicators(apps1Client);
+        ArrayList<IndicatorProgress> ips = new ArrayList<IndicatorProgress>();
+        for(HashMap row : data){
+            IndicatorProgress ip = new IndicatorProgress();
+            ip.populate(row);
+            ips.add(ip);
+        }
+        ProjectCache.get().setIndicatorProgress(ips);
+        
+        
         HashMap<String, TechnicalActivity> taLookup = TamisLogin.getEGPRenovationSites(apps1Client);
         TamisLogin.populateTechnicalActivityObjects(taLookup, apps1Client);
         ProjectCache.get().setTechnicalActivities(taLookup);
