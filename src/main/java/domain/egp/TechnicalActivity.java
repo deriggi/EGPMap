@@ -23,7 +23,11 @@ public class TechnicalActivity {
     private String startDate;
     private String endDate;
     private String status;
+    private String servicesExpanded;
+    private String impact;
+    private String committeeTitle;
 
+    
     
     private String track;
     private String activityHeading;
@@ -36,6 +40,9 @@ public class TechnicalActivity {
     private float latitude;
     private float longitude;
     
+    public static final String committeeTitleKey = "committeetitletopic";
+    public static final String servicesExpandedKey = "servicesexpandedorimproved";
+    public static final String impactKey = "impact";
     public static final String finalCostKey = "finalcost";
     public static final String himiiKey = "usaidmissionpriorityactivity";
     public static final String nameKey = "nameofsitetitle";
@@ -75,6 +82,31 @@ public class TechnicalActivity {
         return null;
     }
 
+    public String getCommitteeTitle() {
+        return committeeTitle;
+    }
+
+    public void setCommitteeTitle(String committeeTitle) {
+        this.committeeTitle = committeeTitle;
+    }
+    
+     public String getServicesExpanded() {
+        return servicesExpanded;
+    }
+
+    public void setServicesExpanded(String servicesExpanded) {
+        this.servicesExpanded = servicesExpanded;
+    }
+
+    public String getImpact() {
+        return impact;
+    }
+
+    public void setImpact(String impact) {
+        this.impact = impact;
+    }
+    
+    
     public void setTargetMinistries(ArrayList<String> targetMinistries) {
         this.targetMinistries = targetMinistries;
     }

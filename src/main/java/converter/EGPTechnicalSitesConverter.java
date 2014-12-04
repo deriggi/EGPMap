@@ -119,6 +119,20 @@ public class EGPTechnicalSitesConverter {
             ta.setLocation(map.get(TechnicalActivity.specificLocationKey));
 
         }
+        
+        if (TAMISUtil.hasIt(map, TechnicalActivity.impactKey)) {
+            ta.setImpact(map.get(TechnicalActivity.impactKey));
+        }
+        
+        if (TAMISUtil.hasIt(map, TechnicalActivity.committeeTitleKey)) {
+            ta.setCommitteeTitle(map.get(TechnicalActivity.committeeTitleKey));
+        }
+        
+        if (TAMISUtil.hasIt(map, TechnicalActivity.servicesExpandedKey)) {
+            ta.setServicesExpanded(map.get(TechnicalActivity.servicesExpandedKey));
+        }
+        
+        
         return ta;
     }
 }

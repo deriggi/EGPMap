@@ -93,9 +93,13 @@ public class StartupHandler implements ServletContextListener {
         
         
         HashMap<String, TechnicalActivity> taLookup = TamisLogin.getEGPRenovationSites(apps1Client);
-        TamisLogin.populateTechnicalActivityObjects(taLookup, apps1Client);
-        ProjectCache.get().setTechnicalActivities(taLookup);
 
+        TamisLogin.populateTechnicalActivityObjects(taLookup, apps1Client);
+        HashMap<String, TechnicalActivity> workplanActivities = TamisLogin.getConvertedWorkplanActivities(apps1Client);
+        taLookup.putAll(workplanActivities);
+        
+        ProjectCache.get().setTechnicalActivities(taLookup);
+        
         HashMap<String, Training> trainingFull = TamisLogin.getEGPTrainingSites(apps1Client, training);
         ProjectCache.get().setTraining(trainingFull);
 

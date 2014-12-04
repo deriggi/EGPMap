@@ -369,13 +369,23 @@ function getTraining() {
 }
 
 function addMarker(lat, lon, data) {
-
+    var popupText = data.track + "<br> <b>Status: </b>" + data.status + "<br> <b>lat,lon: </b>" + lat + ", " +lon;
+    if (typeof data.impact !== "undefined" && data.impact.length > 0){
+        popupText += " <br/> <b>Impact: </b>" + data.impact;
+    }
+    if (typeof data.servicesExpanded !== "undefined" && data.servicesExpanded.length > 0){
+        popupText += " <br/> <b>Services Expanded: </b>" + data.servicesExpanded;
+    }
+    if (typeof data.committeeTitle!== "undefined" && data.committeeTitle.length > 0){
+        popupText += " <br/> <b>Committee Title: </b>" + data.committeeTitle;
+    }
+    
     var fixedMarker = L.marker(new L.LatLng(lat, lon), {
         icon: L.mapbox.marker.icon({
             'marker-color': '1C85EB'
         })
 //    }).bindPopup(data.name).addTo(map);
-    }).bindPopup(data.track + "<br> <b>Status: </b>" + data.status);
+    }).bindPopup(popupText);
 
     fixedMarker.on('click', function(e) {
         JD.set('title', data.activityHeading);
@@ -402,8 +412,8 @@ function addMarker(lat, lon, data) {
         add('cost', "<span style='color:#a8a8a8'>Final Cost: </span>" + data.finalCost, 'goal');
 //        add('ministry', "<span style='color:#a8a8a8'>Ministry: </span>" + data.targetMinistries, 'goal');
         add('location', "<span style='color:#a8a8a8'>Location: </span>" + data.location, 'goal');
-        add('enddate', "<span style='color:#a8a8a8'>End Date: </span>" + data.endDate, 'goal');
-        add('date', "<span style='color:#a8a8a8'>Start Date: </span>" + data.startDate, 'goal');
+//        add('enddate', "<span style='color:#a8a8a8'>End Date: </span>" + data.endDate, 'goal');
+//        add('date', "<span style='color:#a8a8a8'>Start Date: </span>" + data.startDate, 'goal');
 
 
     });
@@ -441,8 +451,8 @@ function addTrainingMarker(lat, lon, data) {
         
         add('male', "<span style='color:#a8a8a8'>Male attendees: </span>" + data.male, 'goal');
         add('female', "<span style='color:#a8a8a8'>Female attendees: </span>" + data.female, 'goal');
-        add('enddate', "<span style='color:#a8a8a8'>End Date: </span>" + data.endDate, 'goal');
-        add('date', "<span style='color:#a8a8a8'>Start Date: </span>" + data.startDate, 'goal');
+//        add('enddate', "<span style='color:#a8a8a8'>End Date: </span>" + data.endDate, 'goal');
+//        add('date', "<span style='color:#a8a8a8'>Start Date: </span>" + data.startDate, 'goal');
 
         var images = getStatusImages(data.images);
         // make this a function

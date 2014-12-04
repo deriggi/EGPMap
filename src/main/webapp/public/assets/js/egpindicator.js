@@ -50,7 +50,7 @@ function fetchInidicatorData() {
 }
 
 function makeBlock(id) {
-    return "<div id='" + id + "' style='min-width: 610px; height: 400px; margin: 0 auto; padding-bottom:20px'></div>";
+    return "<div id='" + id + "' style='min-width: 610px; height: 320px; margin: 0 auto; padding-bottom:20px'></div>";
 
 }
 

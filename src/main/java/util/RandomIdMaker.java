@@ -19,7 +19,7 @@
         public static void main(String[] args) {
             ArrayList<String> list = new ArrayList<String>();
             int i = 0;
-            while (i++ < 700) {
+            while (i++ < 2000) {
                 String id = RandomIdMaker.getAlphaNumericNoOhZero(2);
 
                 if (!list.contains(id)) {
